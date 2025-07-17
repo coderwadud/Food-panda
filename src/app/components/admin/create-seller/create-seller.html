@@ -1,0 +1,98 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="container">
+  <!-- Seller Info Section -->
+  <div formGroupName="sellerInfo">
+    <h5 class="mt-4 mb-3">Seller Info</h5>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Shop Name</label>
+        <input type="text" class="form-control" formControlName="shopName">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Seller Name</label>
+        <input type="text" class="form-control" formControlName="sellerName">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" formControlName="email">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Phone</label>
+        <input type="number" class="form-control" formControlName="phone">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Seller Category</label>
+        <select class="form-control" formControlName="sellerCategoryId">
+            @for (item of sellerCategoryList; track $index) {
+          <option [value]="item.id">{{getProductCategoryName(item.sellerCategoryName)}}</option>
+        }
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Photo</label>
+        <input type="text" class="form-control" formControlName="photo">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>TIN Number</label>
+        <input type="number" class="form-control" formControlName="tinNumber">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>VAT Number</label>
+        <input type="number" class="form-control" formControlName="vatNumber">
+      </div>
+    </div>
+  </div>
+
+  <!-- Location Info Section -->
+  <div formGroupName="locations">
+    <h5 class="mt-4 mb-3">Location Info</h5>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>House Name</label>
+        <input type="text" class="form-control" formControlName="houseName">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Street / Road</label>
+        <input type="text" class="form-control" formControlName="street">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Area</label>
+        <input type="text" class="form-control" formControlName="area">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Post Office</label>
+        <input type="text" class="form-control" formControlName="postOffice">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Postal Code</label>
+        <input type="number" class="form-control" formControlName="postalCode">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>City / District</label>
+        <input type="text" class="form-control" formControlName="city">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Country</label>
+        <input type="text" class="form-control" formControlName="country">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Address Line 1</label>
+        <input type="text" class="form-control" formControlName="addressLine1">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Address Line 2</label>
+        <input type="text" class="form-control" formControlName="addressLine2">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Landmark</label>
+        <input type="text" class="form-control" formControlName="landmark">
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="row mt-4">
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-primary">Save Seller</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,22 @@
+<div class="card p-4">
+    <h4>Create seller Categorys</h4>
+    <form [formGroup]="form" (ngSubmit)="sellerCategorySubmit()">
+        <div class="row mt-4">
+            <div class="col-lg-6 mb-4">
+                <label class="form-label" >Category Name</label>
+                <select class="form-select" formControlName="sellerCategoryName">
+                    @for (item of categoryList; track $index) {
+                    <option [value]="item.id">{{item.product_category_name}}</option>
+                    }
+                </select>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <label class="form-label">Description</label>
+                <input type="text" class="form-control" formControlName="description">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <button type="submit" class="btn btn-primary">Create seller Category</button>
+            </div>
+        </div>
+    </form>
+</div>

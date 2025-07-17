@@ -1,0 +1,33 @@
+<h3>Product List</h3>
+<div class="table-responsive">
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>#sl</th>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Discription</th>
+            <th>Product Category Name</th>
+            <th>Seller name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of productList; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{item.images}}</td>
+            <td>{{item.productName}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.discountPercentage}}%</td>
+            <td>{{item.description}}</td>
+            <td>{{item.productCategoryId}}</td>
+            <td>{{item.sellerId}}</td>
+            <td>{{item.status? "Approve": "Pending"}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+</div>

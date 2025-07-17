@@ -1,0 +1,23 @@
+<h3>Seller Category List</h3>
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>#sl</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of sellerCtgList; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>
+                {{item.sellerCategoryName? getProductCategoryName(item.sellerCategoryName): 'Data Not Found'}}
+            </td>
+            <td>{{item.description}}</td>
+            <td>{{item.seller_ctg_status? "Approve": "Pending"}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+<h3>Product Category List</h3>
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>#sl</th>
+            <th>Name</th>
+            <th>F-key</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of productCategoryList; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{item.product_category_name}}</td>
+            <td>{{item.category_forane_key ? item.category_forane_key: `Primary Key ${item.id}`}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.product_ctg_status? "Approve": "Pending"}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

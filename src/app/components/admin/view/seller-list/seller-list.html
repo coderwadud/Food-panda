@@ -1,0 +1,35 @@
+<h3>Seller Category List</h3>
+<div class="table-responsive">
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>#sl</th>
+            <th>Photo</th>
+            <th>Shop Name</th>
+            <th>Seller Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Seller Category Name</th>
+            <th>Tin No</th>
+            <th>Vat No</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of sellerList; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{item.photo}}</td>
+            <td>{{item.shopName}}</td>
+            <td>{{item.sellerName}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.sellerCategoryId}}</td>
+            <td>{{item.tinNumber}}</td>
+            <td>{{item.vatNumber}}</td>
+            <td>{{item.sellerStatus? "Approve": "Pending"}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+</div>
