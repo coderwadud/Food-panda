@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { idGenerator } from '../../../core/id.generator';
 import { ProductCategoryForm, SellerCategoryForm } from '../../../model/data.type';
+import { generateStringId } from '../../../core/id.generator';
 
 @Component({
   selector: 'app-create-category',
@@ -11,7 +11,6 @@ import { ProductCategoryForm, SellerCategoryForm } from '../../../model/data.typ
 })
 export class CreateCategory {
   sellerCategoryList : Array<SellerCategoryForm>= []
-  categoryList = JSON.parse(localStorage.getItem('product-categories') || '[]');
   private fb = inject(FormBuilder)
   form = this.fb.group({
     id: this.fb.control<string | null>(null),
@@ -19,10 +18,12 @@ export class CreateCategory {
     description: this.fb.control<string | null> (null),
     seller_ctg_status: this.fb.control<boolean | null> (null),
   })
+  
+  sellerCategoryListPrev = JSON.parse(localStorage.getItem('seller-categories') || '[]');
   sellerCategorySubmit(){
     if(this.form.valid){
       const formValue = this.form.getRawValue()
-      formValue.id=idGenerator()
+      formValue.id=generateStringId(this.sellerCategoryListPrev)
       formValue.seller_ctg_status=false
       this.sellerCategoryList = JSON.parse(localStorage.getItem('seller-categories') || '[]');
       this.sellerCategoryList.push(formValue);

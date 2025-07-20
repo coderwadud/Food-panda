@@ -10,6 +10,9 @@ import { ProductCategoryList } from './components/admin/view/product-category-li
 import { SellerCategoryList } from './components/admin/view/seller-category-list/seller-category-list';
 import { SellerList } from './components/admin/view/seller-list/seller-list';
 import { ProductList } from './components/admin/view/product-list/product-list';
+import { SingleSeller } from './components/admin/view/single-seller/single-seller';
+import { Component } from '@angular/core';
+import { SellerProfile } from './components/seller/seller-profile/seller-profile';
 
 export const routes: Routes = [
     {
@@ -49,6 +52,10 @@ export const routes: Routes = [
                 component: SellerList
             },
             {
+                path: 'seller-list/:id',
+                component: SingleSeller
+            },
+            {
                 path: 'product-list',
                 component: ProductList
             },
@@ -57,5 +64,11 @@ export const routes: Routes = [
     {
         path: 'seller',
         component: Seller,
+        children:[
+         {
+            path: 'seller-profile/:id',
+            component: SellerProfile
+         }
+        ]
     },
 ];

@@ -1,9 +1,13 @@
-export function idGenerator(): string {
-  const date = new Date();
-  const timestamp = date.getTime();
-  const day = date.getDate().toString().padStart(2, '0');
 
-  const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+export function generateStringId<T extends { id: string }>(items: T[]): string {
+  if (!items || items.length === 0) return "0";
 
-  return `ID-${timestamp}${day}-${random}`;
+  const numericIds = items
+    .map(item => parseInt(item.id))
+    .filter(id => !isNaN(id));
+
+  if (numericIds.length === 0) return "0";
+
+  const maxId = Math.max(...numericIds);
+  return (maxId + 1).toString();
 }

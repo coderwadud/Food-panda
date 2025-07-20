@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { SellerProfileForm } from '../../../../model/data.type';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-seller-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './seller-list.html',
   styleUrl: './seller-list.css'
 })
@@ -12,9 +13,18 @@ export class SellerList {
   constructor(){
     this.sellerList = JSON.parse(localStorage.getItem('seller-profile') || '[]');
   }
-  // productCategoryList = JSON.parse(localStorage.getItem('product-categories') || '[]');
-  // getProductCategoryName(id: string) {
-  //   const category = this.productCategoryList.find((item : ProductCategoryForm) => item.id === id);
-  //   return category ?  category.product_category_name : "Data Not Found";
-  // }
+  approveStatus(id: string){
+    const status = this.sellerList.find((item=>item.id===id));
+    if(status){
+      status.sellerStatus=true;
+      localStorage.setItem('seller-profile', JSON.stringify(this.sellerList))
+    }
+  }
+  pendingStatus(id: string){
+    const status = this.sellerList.find((item=>item.id===id));
+    if(status){
+      status.sellerStatus=false;
+      localStorage.setItem('seller-profile', JSON.stringify(this.sellerList))
+    }
+  }
 }

@@ -1,26 +1,94 @@
-<ul class="list-group">
-  <li class="list-group-item">
-    <a routerLink="/admin/create-product-category" routerLinkActive="text-orange" [routerLinkActiveOptions]="{ exact: true }">Create Product Category</a>
-  </li>
-  <li class="list-group-item">
-      <a routerLink="/admin/product-category-list" routerLinkActive="text-orange" [routerLinkActiveOptions]="{ exact: true }">Product Category List</a>
-    </li>
-  <li class="list-group-item">
-    <a routerLink="/admin/create-seller-category" routerLinkActive="text-orange" [routerLinkActiveOptions]="{ exact: true }">Create Seller Categorys</a>
-  </li>
-  <li class="list-group-item">
-    <a routerLink="/admin/seller-category-list" routerLinkActive="text-orange" [routerLinkActiveOptions]="{ exact: true }">Seller Category List</a>
-  </li>
-  <li class="list-group-item">
-    <a routerLink="/admin/create-seller" routerLinkActive="text-orange" [routerLinkActiveOptions]="{ exact: true }">Create Seller</a>
-  </li>
-  <li class="list-group-item">
-    <a routerLink="/admin/seller-list" routerLinkActive="text-orange" [routerLinkActiveOptions]="{ exact: true }">Seller List</a>
-  </li>
-  <li class="list-group-item">
-    <a routerLink="/admin/create-product" routerLinkActive="text-orange" [routerLinkActiveOptions]="{ exact: true }">Create Product</a>
-  </li>
-  <li class="list-group-item">
-    <a routerLink="/admin/product-list" routerLinkActive="text-orange" [routerLinkActiveOptions]="{ exact: true }">Product List</a>
-  </li>
-</ul>
+
+<div class="list-group" id="accordionExample">
+  <div class="list-group-item">
+    <button
+      class="accordion-button"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseOne"
+    >
+      Product
+    </button>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse show"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <a
+          routerLink="/admin/create-product-category"
+          routerLinkActive="text-orange"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Create Category</a
+        >
+        <a
+          routerLink="/admin/product-category-list"
+          routerLinkActive="text-orange"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Category List</a
+        >
+        <a
+          routerLink="/admin/create-product"
+          routerLinkActive="text-orange"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Create Product</a
+        >
+
+        <a
+          routerLink="/admin/product-list"
+          routerLinkActive="text-orange"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Product List</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="list-group-item">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseTwo"
+        aria-expanded="false"
+        aria-controls="collapseTwo"
+      >
+        Seller
+      </button>
+    <div
+      id="collapseTwo"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+          <a
+      routerLink="/admin/create-seller-category"
+      routerLinkActive="text-orange"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Create Categorys</a
+    >
+    
+    <a
+      routerLink="/admin/seller-category-list"
+      routerLinkActive="text-orange"
+      [routerLinkActiveOptions]="{ exact: true }"
+      > Category List</a
+    >
+    
+    <a
+      routerLink="/admin/create-seller"
+      routerLinkActive="text-orange"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Create Seller</a
+    >
+    
+    <a
+      routerLink="/admin/seller-list"
+      routerLinkActive="text-orange"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Seller List</a
+    >
+      </div>
+    </div>
+  </div>
+</div>

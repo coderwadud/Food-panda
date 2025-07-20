@@ -12,4 +12,18 @@ export class ProductCategoryList {
   constructor(){
     this.productCategoryList = JSON.parse(localStorage.getItem('product-categories') || '[]');
   }
+  statusApprove(id: string){
+    const status =  this.productCategoryList.find((item)=> item.id === id);
+    if(status){
+      status.product_ctg_status = true;
+      localStorage.setItem('product-categories', JSON.stringify(this.productCategoryList));
+    }
+  }
+  statusPendng(id: string){
+    const status =  this.productCategoryList.find((item)=> item.id === id);
+    if(status){
+      status.product_ctg_status = false;
+      localStorage.setItem('product-categories', JSON.stringify(this.productCategoryList));
+    }
+  }
 }

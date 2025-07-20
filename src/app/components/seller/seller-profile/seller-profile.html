@@ -1,0 +1,66 @@
+<div class="container py-4">
+    @if(sellerProfile && sellerAddress){
+  <div  class="card mb-4 shadow">
+    <div class="card-header bg-secondary text-white">
+      <h4 class="mb-0">Seller Profile</h4>
+    </div>
+    
+      <div class="col-md-12 text-center mt-3">
+        <img [src]="sellerProfile.photo" alt="Seller Photo" class="img-thumbnail" style="max-height: 200px; border-radius: 50%;" />
+        <h6><strong class="badge rounded-pill text-bg-secondary px-5">Seller Id: {{sellerProfile.id}}</strong></h6>
+      </div>
+    <div class="card-body row g-3">
+      <div class="col-md-6">
+        <strong>Shop Name:</strong> {{ sellerProfile.shopName }}
+      </div>
+      <div class="col-md-6">
+        <strong>Seller Name:</strong> {{ sellerProfile.sellerName }}
+      </div>
+      <div class="col-md-6">
+        <strong>Email:</strong> {{ sellerProfile.email }}
+      </div>
+      <div class="col-md-6">
+        <strong>Phone:</strong> {{ sellerProfile.phone }}
+      </div>
+      <div class="col-md-6">
+        <strong>Seller Category ID:</strong> {{ sellerProfile.sellerCategoryId }}
+      </div>
+      <div class="col-md-6">
+        <strong>TIN Number:</strong> {{ sellerProfile.tinNumber }}
+      </div>
+      <div class="col-md-6">
+        <strong>VAT Number:</strong> {{ sellerProfile.vatNumber }}
+      </div>
+      <div class="col-md-6">
+        <strong>Status:</strong>
+              @if(sellerProfile.sellerStatus){
+          <span class="badge rounded-pill text-bg-success">Approved</span>
+          } @else {
+          <span class="badge rounded-pill text-bg-danger">Pending</span>
+          }
+      </div>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-header bg-secondary text-white">
+      <h4 class="mb-0">Seller Address</h4>
+    </div>
+    <div class="card-body row g-3">
+      <div class="col-md-6"><strong>House Name:</strong> {{ sellerAddress.houseName }}</div>
+      <div class="col-md-6"><strong>Street:</strong> {{ sellerAddress.street }}</div>
+      <div class="col-md-6"><strong>Area:</strong> {{ sellerAddress.area }}</div>
+      <div class="col-md-6"><strong>Post Office:</strong> {{ sellerAddress.postOffice }}</div>
+      <div class="col-md-6"><strong>Postal Code:</strong> {{ sellerAddress.postalCode }}</div>
+      <div class="col-md-6"><strong>City:</strong> {{ sellerAddress.city }}</div>
+      <div class="col-md-6"><strong>Country:</strong> {{ sellerAddress.country }}</div>
+      <div class="col-md-6"><strong>Address Line 1:</strong> {{ sellerAddress.addressLine1 }}</div>
+      <div class="col-md-6"><strong>Address Line 2:</strong> {{ sellerAddress.addressLine2 }}</div>
+      <div class="col-md-6"><strong>Landmark:</strong> {{ sellerAddress.landmark }}</div>
+    </div>
+  </div>
+    } @else {
+    <div class="alert alert-warning mt-4">
+        No Seller Data Found.
+    </div>
+    }
+</div>

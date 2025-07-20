@@ -23,7 +23,7 @@
         <label>Seller Category</label>
         <select class="form-control" formControlName="sellerCategoryId">
             @for (item of sellerCategoryList; track $index) {
-          <option [value]="item.id">{{getProductCategoryName(item.sellerCategoryName)}}</option>
+          <option [value]="item.id">{{item.sellerCategoryName}}</option>
         }
         </select>
       </div>

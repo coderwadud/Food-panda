@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { idGenerator } from '../../../core/id.generator';
 import { ProductCategoryForm } from '../../../model/data.type';
-
+import { generateStringId } from '../../../core/id.generator';
 @Component({
   selector: 'app-product-category',
   imports: [ReactiveFormsModule],
-  templateUrl: './product-category.html',
+templateUrl: './product-category.html',
   styleUrl: './product-category.css'
 })
 export class ProductCategory {
@@ -23,7 +22,7 @@ export class ProductCategory {
   productCategorySubmit(){
     if(this.form.valid){
       const formValue = this.form.getRawValue()
-      formValue.id=idGenerator()
+      formValue.id=generateStringId(this.forane_key)
       formValue.product_ctg_status=false
       this.productCategoryList = JSON.parse(localStorage.getItem('product-categories') || '[]');
       this.productCategoryList.push(formValue);

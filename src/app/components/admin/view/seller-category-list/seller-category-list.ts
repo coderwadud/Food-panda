@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductCategoryForm, SellerCategoryForm } from '../../../../model/data.type';
+import { SellerCategoryForm } from '../../../../model/data.type';
 
 @Component({
   selector: 'app-seller-category-list',
@@ -12,9 +12,18 @@ export class SellerCategoryList {
   constructor(){
     this.sellerCtgList = JSON.parse(localStorage.getItem('seller-categories') || '[]');
   }
-  productCategoryList = JSON.parse(localStorage.getItem('product-categories') || '[]');
-  getProductCategoryName(id: string) {
-    const category = this.productCategoryList.find((item : ProductCategoryForm) => item.id === id);
-    return category ?  category.product_category_name : "Data Not Found";
+  approveStatus(id: string){
+    const status = this.sellerCtgList.find((item=> item.id === id));
+    if(status){
+      status.seller_ctg_status = true;
+      localStorage.setItem('seller-categories', JSON.stringify(this.sellerCtgList))
+    }
+  }
+  pendingStatus(id: string){
+    const status = this.sellerCtgList.find((item=> item.id=id));
+    if(status){
+      status.seller_ctg_status = false;
+      localStorage.setItem('seller-categories', JSON.stringify(this.sellerCtgList))
+    }
   }
 }

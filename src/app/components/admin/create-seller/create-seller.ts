@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { fullAddress, ProductCategoryForm, SellerProfileForm } from '../../../model/data.type';
+import { fullAddress, SellerCategoryForm, SellerProfileForm } from '../../../model/data.type';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { idGenerator } from '../../../core/id.generator';
+import { generateStringId } from '../../../core/id.generator';
 
 @Component({
   selector: 'app-create-seller',
@@ -42,17 +42,14 @@ export class CreateSeller {
     })
   })
   sellerCategoryList = JSON.parse(localStorage.getItem('seller-categories') || '[]');
-  productCategoryList = JSON.parse(localStorage.getItem('product-categories') || '[]');
 
-  getProductCategoryName(id: string) {
-    const category = this.productCategoryList.find((item : ProductCategoryForm) => item.id === id);
-    return category ?  category.product_category_name : category.id;
-  }
+    userFullAddressprevDAta = JSON.parse(localStorage.getItem('location') || '[]');
+    sellerListprevDAta = JSON.parse(localStorage.getItem('seller-profile') || '[]');
   onSubmit(){
     if(this.form.valid){
       const formValue = this.form.getRawValue()
-      formValue.sellerInfo.id=idGenerator()
-      formValue.locations.id=idGenerator()
+      formValue.sellerInfo.id=generateStringId(this.sellerListprevDAta)
+      formValue.locations.id=generateStringId(this.userFullAddressprevDAta)
       formValue.sellerInfo.sellerStatus=false
       formValue.locations.userForane_key= formValue.sellerInfo.id
       const sellerInfo = formValue.sellerInfo
@@ -69,4 +66,10 @@ export class CreateSeller {
       alert('Please fill out the form correctly.');
     }
   }
+
+   ngOnInit() {
+      this.sellerCategoryList = this.sellerCategoryList.filter(
+        (category: SellerCategoryForm) => category.seller_ctg_status === true
+      );
+    }
 }

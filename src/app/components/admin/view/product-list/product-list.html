@@ -1,6 +1,6 @@
 <h3>Product List</h3>
 <div class="table-responsive">
-<table class="table table-bordered mt-4">
+<table class="table table-bordered mt-4" style="min-width: 1400px;">
     <thead>
         <tr>
             <th>#sl</th>
@@ -9,7 +9,7 @@
             <th>Price</th>
             <th>Discount</th>
             <th>Discription</th>
-            <th>Product Category Name</th>
+            <th>Category Name</th>
             <th>Seller name</th>
             <th>Status</th>
         </tr>
@@ -18,14 +18,36 @@
         @for (item of productList; track $index) {
         <tr>
             <td>{{$index+1}}</td>
-            <td>{{item.images}}</td>
+            <td><img [src]="item.images" alt="" style="height: 50px; width: 50px;"></td>
             <td>{{item.productName}}</td>
             <td>{{item.price}}</td>
             <td>{{item.discountPercentage}}%</td>
             <td>{{item.description}}</td>
-            <td>{{item.productCategoryId}}</td>
-            <td>{{item.sellerId}}</td>
-            <td>{{item.status? "Approve": "Pending"}}</td>
+            <td>
+                @if(item.productCategoryId){
+                    {{categoryNameFind(item.productCategoryId)}}
+                    <span class="badge rounded-pill text-bg-primary">Category Id: {{item.productCategoryId}}</span>
+                }
+            </td>
+            <td>
+                @if(item.sellerId){
+                    {{sellerNameFind(item.sellerId)}}
+                    <span class="badge rounded-pill text-bg-primary">seller Id: {{item.sellerId}}</span>
+                }
+            </td>
+                  <td>
+                @if(item.status){
+                    <span class="badge rounded-pill text-bg-success">Approved</span>
+                } @else {
+                    <span class="badge rounded-pill text-bg-danger">Pending</span>
+                }
+            </td>
+            <td>
+                @if(item.id){
+                    <button type="button" class="btn btn-primary" (click)="approveStatus(item.id)">Approve</button>
+                    <button type="button" class="btn btn-danger ms-3" (click)="pendingStatus(item.id)">Pending</button>
+                }
+            </td>
         </tr>
         }
     </tbody>
