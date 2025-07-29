@@ -49,3 +49,13 @@ export interface ProductForm {
   description: string | null;
   status: boolean | null;
 }
+export interface ProductCart {
+  id: string;
+  productId: string;
+  productName: string;
+  productCategoryId: string; 
+  images: string; 
+  price: number;
+  discountPercentage: number;
+}
+
