@@ -13,11 +13,17 @@ import { ProductList } from './components/admin/view/product-list/product-list';
 import { SingleSeller } from './components/admin/view/single-seller/single-seller';
 import { Component } from '@angular/core';
 import { SellerProfile } from './components/seller/seller-profile/seller-profile';
+import { CardList } from './components/customer/card-list/card-list';
 
 export const routes: Routes = [
     {
         path: '',
         component: Customer,
+    },
+
+    {
+        path: 'cart-list',
+        component: CardList
     },
     {
         path: 'admin',
