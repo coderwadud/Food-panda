@@ -1,7 +1,8 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProductCart } from '../../../model/data.type';
 import { CurrencyPipe, JsonPipe } from '@angular/common';
+import { CartService } from '../../customer/service/cart.service';
 
 @Component({
   selector: 'app-common-headers',
@@ -10,12 +11,6 @@ import { CurrencyPipe, JsonPipe } from '@angular/common';
   styleUrl: './common-headers.css',
 })
 export class CommonHeaders {
-  productCartList : Array<ProductCart>= []
-  
-  totalAmount = computed(()=> 
-    this.productCartList.reduce((total, item) => total + item.price, 0)
-  )
-  constructor(){
-    this.productCartList = JSON.parse(localStorage.getItem('product-cart-list') || '[]');
-  }
+  cartService = inject(CartService)
+  totalAmount = this.cartService.totalAmount;
 }
